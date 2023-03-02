@@ -2,11 +2,13 @@ const cardsContainer = document.querySelector(".cards-container");
 const formContainer = document.querySelector(".form-container");
 const newBookButton = document.getElementById("new-book-btn");
 const closeFormButton = document.getElementById("close-form");
+const submitButton = document.getElementById("submit");
 
 let myLibrary = [];
 
 newBookButton.addEventListener("click", openForm);
 closeFormButton.addEventListener("click", closeForm);
+submitButton.addEventListener("click", addBookFromForm)
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -109,6 +111,27 @@ function toggleReadStatus(index) {
     }
 }
 
+function addBookFromForm() {
+    let title = document.getElementById("title").value;
+    let author = document.getElementById("author").value;
+    let pages = document.getElementById("pages").value;
+    let read = document.getElementById("read-yes");
+
+    if (title === "" || author === "" || pages === "") {
+        alert("All fields are required.");
+        event.preventDefault();
+    } else {
+        let readStatus;
+        if (read.checked) readStatus = true;
+        else readStatus = false;
+        const newBook = new Book(title, author, pages, readStatus);
+        addBookToLibrary(newBook);
+        displayBook(newBook);
+        closeForm();
+        event.preventDefault();
+    }
+}
+
 function initializeLibrary() {
     const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
     const theBookThief = new Book("The Book Thief", "Markus Zusak", 584, true);
@@ -127,6 +150,15 @@ function openForm() {
 
 function closeForm() {
     formContainer.style.display = "none";
+    let title = document.getElementById("title");
+    let author = document.getElementById("author");
+    let pages = document.getElementById("pages");
+    let read = document.getElementById("read-yes")
+
+    title.value = "";
+    author.value = "";
+    pages.value = "";
+    read.checked = true;
 }
 
 initializeLibrary();
