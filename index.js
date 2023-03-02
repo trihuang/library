@@ -1,6 +1,12 @@
 const cardsContainer = document.querySelector(".cards-container");
+const formContainer = document.querySelector(".form-container");
+const newBookButton = document.getElementById("new-book-btn");
+const closeFormButton = document.getElementById("close-form");
 
 let myLibrary = [];
+
+newBookButton.addEventListener("click", openForm);
+closeFormButton.addEventListener("click", closeForm);
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -25,3 +31,11 @@ function addBookToLibrary() {
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
 const theBookThief = new Book("The Book Thief", "Markus Zusak", 584, true);
 const nineteenEightyFour = new Book("Nineteen Eighty-Four", "George Orwell", 328, true);
+
+function openForm() {
+    formContainer.style.display = "block";
+}
+
+function closeForm() {
+    formContainer.style.display = "none";
+}

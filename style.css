@@ -14,6 +14,84 @@ body {
 h1 {
     font-size: 4rem;
     font-family: "Dancing Script";
+    margin: 0;
+}
+
+button {
+    padding: 10px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: 10%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 20px;
+    background-color: rgba(12, 156, 12, 0.7);
+    border: 1px solid white;
+    color: white;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgba(12, 156, 12, 1);
+}
+
+.form-container {
+    display: none;
+    border: 3px solid green;
+    background-color: white;
+    position: fixed;
+    color: black;
+    top: 22%;
+    left: 33%;
+    z-index: 1;
+    width: 500px;
+    height: 400px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 25px;
+}
+
+form > label {
+    padding-left: 1rem;
+    color: rgb(94, 91, 91);
+}
+
+form > input {
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+    height: 1.25rem;
+    width: 400px;
+    border-radius: 10px;
+    border: 1px solid green;
+}
+
+fieldset {
+    border: none;
+    color: rgb(94, 91, 91);
+}
+
+form > button {
+    margin: 0 auto;
+}
+
+h3 {
+    font-size: 1.75rem;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header img {
+    margin-top: 2rem;
+    margin-right: 2rem;
 }
 
 .cards-container {
@@ -60,7 +138,7 @@ p {
 
 footer {
     font-size: 0.8rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 a {
