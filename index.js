@@ -1,3 +1,5 @@
+const cardsContainer = document.querySelector(".cards-container");
+
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
