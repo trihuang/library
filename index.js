@@ -119,17 +119,20 @@ function addBookFromForm() {
 
     if (title === "" || author === "" || pages === "") {
         alert("All fields are required.");
-        event.preventDefault();
     } else {
         let readStatus;
         if (read.checked) readStatus = true;
         else readStatus = false;
         const newBook = new Book(title, author, pages, readStatus);
-        addBookToLibrary(newBook);
-        displayBook(newBook);
-        closeForm();
-        event.preventDefault();
+        if (isAlreadyInLibrary(newBook)) {
+            alert("This book is already in the library.");
+        } else {
+            addBookToLibrary(newBook);
+            displayBook(newBook);
+            closeForm();
+        }
     }
+    event.preventDefault();
 }
 
 function initializeLibrary() {
@@ -142,6 +145,12 @@ function initializeLibrary() {
     addBookToLibrary(nineteenEightyFour);
 
     displayBooks(myLibrary);
+}
+
+function isAlreadyInLibrary(book) {
+    return (myLibrary.filter(item => item.title === book.title)
+    .filter(item => item.author === book.author)
+    .length > 0);
 }
 
 function openForm() {
