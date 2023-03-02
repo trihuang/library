@@ -30,6 +30,8 @@ function addBookToLibrary(book) {
 function displayBook(book) {
     const card = document.createElement("div");
     card.classList.add("card");
+    let index = myLibrary.indexOf(book);
+    card.setAttribute("data-key", `${index}`);
     const text = document.createElement("div");
     text.classList.add("text");
 
@@ -62,6 +64,8 @@ function displayBook(book) {
     toggle.classList.add("switch");
     const input = document.createElement("input");
     input.type = "checkbox";
+    if (book.read) input.checked = true;
+    input.setAttribute("onclick", `toggleReadStatus(${index})`);
     toggle.appendChild(input);
     const slider = document.createElement("span");
     slider.classList.add("slider");
@@ -74,6 +78,7 @@ function displayBook(book) {
     const closeIcon = document.createElement("img");
     closeIcon.classList.add("close-icon");
     closeIcon.src = "./img/close-icon.svg";
+    closeIcon.setAttribute("onclick", `removeBook(${index})`);
     card.appendChild(closeIcon);
 
     cardsContainer.appendChild(card);
@@ -85,12 +90,23 @@ function displayBooks(books) {
     }
 }
 
-function removeBook() {
-
+function removeBook(index) {
+    const card = document.querySelector(`.card[data-key='${index}']`);
+    cardsContainer.removeChild(card);
+    myLibrary.splice(index, 1);
 }
 
-function toggleReadStatus() {
-
+function toggleReadStatus(index) {
+    const card = document.querySelector(`.card[data-key='${index}']`);
+    const text = card.childNodes[0];
+    const status = text.childNodes[3];
+    const readStatus = status.childNodes[1];
+    const readStatusText = readStatus.textContent;
+    if (readStatusText === "Read") {
+        readStatus.textContent = "Not read yet";
+    } else {
+        readStatus.textContent = "Read";
+    }
 }
 
 function initializeLibrary() {
