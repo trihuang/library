@@ -1,0 +1,58 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    background-image: url(./img/leaves.jpg);
+    background-position: center;
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 4rem;
+    font-family: "Dancing Script";
+}
+
+.cards-container {
+    flex: 1;
+    text-align: left;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    margin: 10px;
+    row-gap: 30px;
+    overflow: scroll;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 25px;
+    color: black;
+    width: 400px;
+    height: 250px;
+    padding-top: 1rem;
+    padding-left: 1.5rem;
+    overflow: auto;
+
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+p {
+    font-size: 1.25rem;
+}
+
+footer {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+a {
+    text-decoration: underline;
+    color: white;
+}

@@ -1,10 +1,10 @@
 let myLibrary = [];
 
-function Book(title, author, pages) {
+function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = false;
+    this.read = read;
 }
 
 Book.prototype.info = function() {
@@ -20,7 +20,6 @@ function addBookToLibrary() {
 
 }
 
-const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295);
-console.log(theHobbit.info());
-theHobbit.read = true;
-console.log(theHobbit.info());
+const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
+const theBookThief = new Book("The Book Thief", "Markus Zusak", 584, true);
+const nineteenEightyFour = new Book("Nineteen Eighty-Four", "George Orwell", 328, true);
